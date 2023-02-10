@@ -1,14 +1,5 @@
 from django.db import models
 
-BOOK_STATUS = (
-    ('A', 'Available'),
-    ('B', 'Borrowed'),
-    ('D', 'Donation'),
-    ('RE', 'Read'),
-    ('RG', 'Reading'),
-    ('NR', 'Not Read'),
-)
-
 
 class Author(models.Model):
 
@@ -45,6 +36,15 @@ class Genre(models.Model):
 
 class Book(models.Model):
 
+    STATUS = (
+        ('A', 'Available'),
+        ('B', 'Borrowed'),
+        ('D', 'Donation'),
+        ('RE', 'Read'),
+        ('RG', 'Reading'),
+        ('NR', 'Not Read'),
+    )
+    
     class Meta:
         verbose_name = 'Book'
         ordering = ["title"]
@@ -54,7 +54,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, blank=True, null=True, on_delete=models.SET_NULL)
     publisher = models.ForeignKey(Publisher, blank=True, null=True, on_delete=models.SET_NULL)
     genre = models.ForeignKey(Genre, blank=True, null=True, on_delete=models.SET_NULL)
-    status = models.CharField(blank=False, null=False, max_length=100, default= "A", choices=BOOK_STATUS)
+    status = models.CharField(blank=False, null=False, max_length=100, default= "A", choices=STATUS)
     image = models.ImageField(blank=True, null=True, upload_to='images/')
 
     def __str__(self):
