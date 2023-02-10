@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Book detail</h1>
+      <p>
+        <a href="{% url 'book_update' book.id %}" class="btn btn-success btn-sm">Update</a>
+        <a href="{% url 'book_delete' book.id %}" class="btn btn-danger btn-sm">Delete</a>
+        <a href="{% url 'book_list' %}" class="btn btn-secondary btn-sm">Return</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 mb-2">
+    {% if book.image %}
+    <img class="img-fluid rounded-start-top" src="{{ book.image.url }}" alt="Book cover">
+        {% else %}
+    <img class="img-fluid" src="{% static 'main/img/no_image.png' %}" alt="No image">
+    {% endif %}
+    </div>
+    <div class="col-8">
+      <dl>
+        <dt>Title</dt>
+        <dd>{{ book.title }}</dd>
+        <dt>Sub-title</dt>
+        <dd>{{ book.sub_title }}</dd>
+        <dt>Author</dt>
+        <dd>{{ book.author }}</dd>
+        <dt>Publisher</dt>
+        <dd>{{ book.publisher }}</dd>
+        <dt>Genre</dt>
+        <dd>{{ book.genre }}</dd>
+        <dt>Status</dt>
+        <dd>{{ book.status }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

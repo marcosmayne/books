@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>
+        Publisher list
+        <span class="badge bg-secondary">{{ publisher_list.count }}</span>
+      </h1>
+      <p>
+        <a href="{% url 'publisher_create' %}" class="btn btn-primary">Create</a>
+      </p>
+    </div>
+  </div>
+  <div class="row row-cols-2 row-cols-md-3 g-2">
+  {% for publisher in publisher_list %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h6">
+            {{ publisher.name }}
+          </h2>
+          <p class="card-text">
+            <a class="stretched-link" href="{% url 'publisher_detail' publisher.id %}">Detail</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>
+      No authors.
+    </p>
+  {% endfor %}
+  </div>
+</div>
+
+{% endblock main %}
+
+

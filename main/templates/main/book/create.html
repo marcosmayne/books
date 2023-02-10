@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>
+        Book create
+      </h1>
+      <form method="post" novalidate enctype="multipart/form-data" class="form-label">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" name= "Image" value="Submit">
+        <a class="ms-2" href="{% url 'book_list' %}">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

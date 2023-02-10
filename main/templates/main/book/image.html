@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+
+  <h2>
+    Book {{ book.title }} - image
+  </h2>
+
+    <img src="/media/{{ book.image.name }}" width="300">
+
+{% endblock main %}
+
+

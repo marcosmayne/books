@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Publisher delete</h1>
+      <p>
+        Delete publisher: <b>{{ publisher.name }}</b>?
+      </p>
+
+  <div class="col">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+      <a href="{% url 'publisher_list' %}" class="btn btn-secondary btn-sm">Return</a>
+    </form>
+  </div>
+</div>
+
+{% endblock main %}
+
+

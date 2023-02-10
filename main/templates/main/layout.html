@@ -1,0 +1,29 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">      <!-- meta tag to mobile first -->
+      <meta name="description" content="A simple book management application.">
+      <meta name="author" content="Marcos Mayne Moyle">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href={% static 'main/css/bootstrap.min.css' %}>
+
+      <title>Books</title>
+  </head>
+
+  <!-- Início da página -->
+  <body>
+        <header class="mb-4">{% include 'main/header.html' %}</header>
+        <main class="mb-4">{% block main %}{% endblock main %}</main>
+        <footer class="border-top pt-2">{% include 'main/footer.html' %}</footer>
+        <!-- Bootstrap JS -->
+        <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+      </div>
+  </body>
+
+</html>

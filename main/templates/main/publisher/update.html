@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+
+{% block main %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1>Publisher update</h1>
+      <p>
+        <a href="{% url 'publisher_list' %}" class="btn btn-secondary btn-sm">Return</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form method="post" novalidate enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success btn-sm" type="submit" value="Update">
+      </form>
+    </div>
+  </div>
+
+</div>
+
+{% endblock main %}

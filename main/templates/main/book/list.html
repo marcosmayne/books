@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1>
+        Book list
+        <span class="badge bg-secondary">{{ book_list.count }}</span>
+      </h1>
+      <p>
+        <a href="{% url 'book_create' %}" class="btn btn-primary btn-sm">Create</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-3 g-2">
+    {% for book in book_list %}
+    <div class="col">
+      {% include 'main/book/card.html' %}
+    </div>
+    {% empty %}
+    <p>
+      No books.
+    </p>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock main %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

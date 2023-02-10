@@ -1,0 +1,25 @@
+{% load static %}
+<div class="card h-100">
+  <div class="row g-0">
+    <div class="col-6">
+    {% if book.image %}
+      <img class="img-fluid rounded-start" src="{{ book.image.url }}" alt="Book cover">
+    {% else %}
+      <img class="img-fluid rounded-start" src="{% static 'main/img/no_image.png' %}" alt="No image">
+    {% endif %}
+    </div>
+    <div class="col-6">
+      <div class="card-body">
+        <h2 class="card-title h6">
+          {{ book.title }}
+        </h2>
+        <p class="card-text">
+          {{ book.sub_title }}
+        </p>
+        <p class="card-text">
+          <a class="stretched-link" href="{% url 'book_detail' book.id %}">Details</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
