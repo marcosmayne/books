@@ -282,6 +282,8 @@ def book_update_view(request, id):
         form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             book.image = form.cleaned_data["image"]
+            if not book.image:
+                book.image = "images/no_image.png"
             print(book.image)
             form.save()
             return redirect('book_list')
