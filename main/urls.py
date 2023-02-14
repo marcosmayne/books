@@ -42,6 +42,10 @@ urlpatterns = [
     #path('user/login/', views.user_login_view, name='user_detail' ),
     #path('user/logout/', views.user_logout_view, name='user_logout'),
 
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # New
+]
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
 
