@@ -22,6 +22,7 @@ from main.models import (
 from django.http import Http404, HttpResponseRedirect
 from PIL import Image, ImageChops, ImageFilter
 
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -282,10 +283,8 @@ def book_update_view(request, id):
         form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             book.image = form.cleaned_data["image"]
-            # temporary solution for False im book.image
             if not book.image:
                 book.image = "images/no_image.png"
-            print(book.image)
             form.save()
             return redirect('book_list')
 
@@ -370,7 +369,6 @@ def user_login_view(request):
                 return redirect('/')
 
         return render(request, 'main/user/login.html', {'form': form})
-
 
 def user_logout_view(request):
     logout(request)
