@@ -44,7 +44,7 @@ class Book(models.Model):
         ('RG', 'Reading'),
         ('NR', 'Not Read'),
     )
-    
+
     class Meta:
         verbose_name = 'Book'
         ordering = ["title"]
@@ -59,3 +59,13 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+"""
+    def save(self, *args, **kwargs):
+        old = Book.objects.get(id=self.id)
+        if old.image != self.image:
+            print(f"As imagens antiga e atual são diferentes.")
+        else:
+            pass
+        super(Book, self).save(*args, **kwargs)
+"""
